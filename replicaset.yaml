@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: demo-golang
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-golang
+  template:
+    metadata:
+      labels:
+        app: demo-golang
+    spec:
+      containers:
+      - image: gcr.io/real-estate-186513/rs-catalog-api:v1
+        command: ["rs-catalog-api"]
+        name: alpine-linux
+        imagePullPolicy: IfNotPresent
